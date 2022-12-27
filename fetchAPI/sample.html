@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Godaddy API</p>
+    <script>
+        // fetch("https://tugrulyildirim.com/api/post-some-data-uri", {
+        // method: 'GET', 
+        // })
+        // .then((response) => response.json())
+        // .then((data) => console.log(data))
+        
+        // const API_KEY = 3mM44UbhTViuVZ_N1xrDz8GB4Tyhd3jtrF4e8;
+        // const API_SECRET = 7wGLWGw2Rrzi5v7XWPCfTC;
+
+        fetch('https://api.ote-godaddy.com/v1/domains/available?domain=clifford.xyz&checkType=FAST&forTransfer=false', {
+            headers: {
+                'accept': 'application/json',
+                'Authorization': 'sso-key UzQxLikm_46KxDFnbjN7cQjmw6wocia:46L26ydpkwMaKZV6uVdDWe'
+            }
+        })
+        .then((res) => res.json())
+        .then((data) => {
+                //for loop for the data array output
+                let output = '<h2>Domains</h2>';
+                data.forEach(function(domain){
+                    output += `
+                        <ul>
+                            <li>Domain: ${domain.domain}</li>
+                            <li>Price: ${domain.price}</li>
+                            </a>
+                        </ul>
+                    `;
+                });
+                document.getElementById('output').innerHTML = output;
+            })
+
+    </script>
+</body>
+</html>
